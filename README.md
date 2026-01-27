@@ -1,80 +1,117 @@
 # Jorie Alsakran - Portfolio
 
-Portfolio شخصي تفاعلي مبني بـ React, TailwindCSS, و Framer Motion.
+Interactive personal portfolio built with React, TailwindCSS, and Framer Motion.
 
-## ✨ المميزات
+## ✨ Features
 
-- 🎨 تصميم عصري وجذاب مع تأثيرات بصرية متقدمة
-- 🚀 حركات سلسة وتأثيرات تفاعلية باستخدام Framer Motion
-- 📱 متجاوب بالكامل مع جميع الأجهزة
-- ⚡ أداء عالي وسريع
-- 🎭 Typing animation في Hero Section
-- 🎯 Scroll animations عند التمرير
-- 🎪 Modal animations للمشاريع
-- 📊 Animated progress bars للمهارات
+- 🎨 Modern and attractive design with advanced visual effects
+- 🚀 Smooth animations and interactive effects using Framer Motion
+- 📱 Fully responsive for all devices
+- ⚡ High performance and fast loading
+- 🎭 Typing animation in Hero Section
+- 🎯 Scroll animations on scroll
+- 🎪 Modal animations for projects
+- 📊 Animated progress bars for skills
+- 🌙 Dark/Light theme toggle
+- 🌍 Arabic/English language support
 
-## 🛠️ التقنيات المستخدمة
+## 🛠️ Technologies Used
 
-- **React** - مكتبة JavaScript لبناء واجهات المستخدم
-- **TypeScript** - لكتابة كود آمن ومنظم
-- **Vite** - Build tool سريع
-- **TailwindCSS** - Framework CSS للتصميم السريع
-- **Framer Motion** - مكتبة للحركات والأنيميشن
-- **React Intersection Observer** - لتفعيل الحركات عند الظهور
+- **React** - JavaScript library for building user interfaces
+- **TypeScript** - For writing safe and organized code
+- **Vite** - Fast build tool
+- **TailwindCSS** - CSS framework for rapid design
+- **Framer Motion** - Library for animations and motion
+- **React Intersection Observer** - To trigger animations on appearance
+- **Web3Forms** - For contact form email delivery
 
-## 🚀 التشغيل
+## 🚀 Getting Started
 
-1. تثبيت الحزم:
+1. Install dependencies:
 ```bash
 npm install
 ```
 
-2. تشغيل المشروع في وضع التطوير:
+2. Run the project in development mode:
 ```bash
 npm run dev
 ```
 
-3. بناء المشروع للإنتاج:
+3. Build the project for production:
 ```bash
 npm run build
 ```
 
-4. معاينة البناء:
+4. Preview the build:
 ```bash
 npm run preview
 ```
 
-## 📁 هيكل المشروع
+## 📁 Project Structure
 
 ```
 src/
 ├── components/
-│   ├── Hero.tsx          # القسم الرئيسي مع typing animation
-│   ├── Navbar.tsx        # شريط التنقل
-│   ├── Projects.tsx      # قسم المشاريع
-│   ├── ProjectModal.tsx  # نافذة تفاصيل المشروع
-│   ├── Skills.tsx        # قسم المهارات
-│   ├── Contact.tsx       # قسم التواصل
-│   └── Footer.tsx        # التذييل
-├── App.tsx               # المكون الرئيسي
-├── main.tsx              # نقطة الدخول
-└── style.css             # الأنماط العامة
+│   ├── Hero.tsx          # Main section with typing animation
+│   ├── Navbar.tsx        # Navigation bar
+│   ├── Projects.tsx      # Projects section
+│   ├── ProjectModal.tsx  # Project details modal
+│   ├── Skills.tsx        # Skills section
+│   ├── Experience.tsx    # Work experience section
+│   ├── Contact.tsx       # Contact section
+│   ├── Footer.tsx         # Footer
+│   ├── CustomCursor.tsx  # Custom cursor effect
+│   └── ScrollProgress.tsx # Scroll progress indicator
+├── contexts/
+│   ├── ThemeContext.tsx  # Theme management
+│   └── LanguageContext.tsx # Language management
+├── App.tsx               # Main component
+├── main.tsx              # Entry point
+└── style.css             # Global styles
 ```
 
-## 🎨 التخصيص
+## 🎨 Customization
 
-يمكنك تخصيص المحتوى من خلال تعديل:
-- بيانات المشاريع في `src/components/Projects.tsx`
-- المهارات في `src/components/Skills.tsx`
-- معلومات التواصل في `src/components/Contact.tsx`
-- الألوان في `tailwind.config.js`
+You can customize the content by editing:
+- Project data in `src/components/Projects.tsx`
+- Skills in `src/components/Skills.tsx`
+- Work experience in `src/components/Experience.tsx`
+- Contact information in `src/components/Contact.tsx`
+- Colors in `tailwind.config.js`
+- Translations in `src/contexts/LanguageContext.tsx`
 
-## 📝 ملاحظات
+## 📧 Contact Form Setup
 
-- تأكد من تحديث روابط المشاريع ووسائل التواصل الاجتماعي
-- يمكنك استبدال الصور بأخرى من مشاريعك الحقيقية
-- جميع الحركات قابلة للتخصيص من خلال Framer Motion
+The contact form uses Web3Forms for email delivery. To set it up:
+
+1. Get your Access Key from [Web3Forms](https://web3forms.com/)
+2. Create a `.env` file in the root directory
+3. Add: `VITE_WEB3FORMS_ACCESS_KEY=your_access_key_here`
+4. Restart the development server
+
+See `WEB3FORMS_SETUP.md` for detailed instructions.
+
+## 🚀 Deployment
+
+### GitHub Pages
+
+1. Enable GitHub Pages in repository settings
+2. Set source to `gh-pages` branch
+3. Deploy:
+```bash
+npm run deploy
+```
+
+The site will be available at:
+`https://JorieSK.github.io/Jorie-Alsakran-Portfolio`
+
+## 📝 Notes
+
+- Make sure to update project links and social media links
+- You can replace images with your actual project images
+- All animations are customizable through Framer Motion
+- The contact form requires Web3Forms setup to send emails
 
 ---
 
-صُنع بـ ❤️ باستخدام أحدث التقنيات
+Made with ❤️ using the latest technologies

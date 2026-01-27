@@ -38,11 +38,11 @@ const Contact = () => {
     setStatus('sending')
 
     try {
-      // استخدام Web3Forms - يرسل الإيميل مباشرة بدون ربط Gmail
+      // Use Web3Forms - sends email directly without Gmail setup
       const web3formsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
       
       if (web3formsKey) {
-        // إرسال مباشر عبر Web3Forms
+        // Direct send via Web3Forms
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: {
@@ -51,12 +51,12 @@ const Contact = () => {
           },
           body: JSON.stringify({
             access_key: web3formsKey,
-            subject: formData.name, // الاسم = عنوان الإيميل
+            subject: formData.name, // Name = email subject
             from_name: formData.name,
-            from_email: formData.email, // البريد الإلكتروني = جهة الإرسال (للرد)
-            message: formData.message, // الرسالة = محتوى الإيميل
-            // ملاحظة: Web3Forms يرسل الإيميل إلى الإيميل المرتبط بالـ Access Key
-            // تأكد من استخدام joriealsakran@gmail.com عند إنشاء Access Key
+            from_email: formData.email, // Email = sender address (for reply)
+            message: formData.message, // Message = email body
+            // Note: Web3Forms sends email to the email associated with the Access Key
+            // Make sure to use joriealsakran@gmail.com when creating the Access Key
           }),
         })
 
@@ -70,7 +70,7 @@ const Contact = () => {
           throw new Error(result.message || 'Failed to send')
         }
       } else {
-        // إذا لم يكن Web3Forms مُعداً، استخدم mailto كبديل
+        // If Web3Forms is not configured, use mailto as fallback
         const subject = encodeURIComponent(formData.name)
         const body = encodeURIComponent(
           `From: ${formData.email}\n\nMessage:\n${formData.message}`
