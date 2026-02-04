@@ -120,7 +120,9 @@ const Contact = () => {
               variants={itemVariants}
               className="text-5xl md:text-6xl font-bold mb-4"
             >
-              <span className="text-gradient">{t('contact.title')}</span>
+              <span className="text-gradient dark:bg-gradient-to-r dark:from-blue-400 dark:via-blue-500 dark:to-slate-300 dark:bg-clip-text dark:text-transparent">
+                {t('contact.title')}
+              </span>
             </motion.h2>
             <motion.p
               variants={itemVariants}
@@ -135,7 +137,9 @@ const Contact = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
               {/* Contact Form */}
               <motion.div variants={itemVariants}>
-                <div className="glass rounded-xl p-6 md:p-8 h-full">
+                <div className="relative rounded-3xl overflow-hidden h-full group">
+                  <div className="absolute inset-0 bg-white border border-blue-200/50 shadow-lg rounded-3xl dark:bg-transparent dark:border-transparent dark:shadow-none dark:bg-gradient-to-br dark:from-blue-500/20 dark:via-blue-600/20 dark:to-slate-700/20 dark:border-white/10 group-hover:dark:border-blue-400/40 transition-all duration-500" />
+                  <div className="relative p-6 md:p-8 h-full">
                   <h3 className="text-2xl font-bold mb-6 dark:text-white text-[#1a1a2e]">
                     {t('contact.send')}
                   </h3>
@@ -156,7 +160,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         placeholder={t('contact.namePlaceholder')}
-                        className="w-full px-4 py-3 rounded-lg border border-blue-200/50 dark:border-blue-500/30 bg-white/80 dark:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:text-white text-[#1a1a2e] placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-all duration-300"
+                        className="w-full px-4 py-3 rounded-lg border border-blue-200/50 dark:border-blue-500/30 bg-white dark:bg-slate-800/80 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:text-white text-[#1a1a2e] placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-all duration-300"
                       />
                     </div>
 
@@ -176,7 +180,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         placeholder="your.email@example.com"
-                        className="w-full px-4 py-3 rounded-lg border border-blue-200/50 dark:border-blue-500/30 bg-white/80 dark:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:text-white text-[#1a1a2e] placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-all duration-300"
+                        className="w-full px-4 py-3 rounded-lg border border-blue-200/50 dark:border-blue-500/30 bg-white dark:bg-slate-800/80 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:text-white text-[#1a1a2e] placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-all duration-300"
                       />
                     </div>
 
@@ -196,7 +200,7 @@ const Contact = () => {
                         required
                         rows={6}
                         placeholder={t('contact.messagePlaceholder')}
-                        className="w-full px-4 py-3 rounded-lg border border-blue-200/50 dark:border-blue-500/30 bg-white/80 dark:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:text-white text-[#1a1a2e] placeholder:text-gray-400 dark:placeholder:text-gray-500 resize-none transition-all duration-300"
+                        className="w-full px-4 py-3 rounded-lg border border-blue-200/50 dark:border-blue-500/30 bg-white dark:bg-slate-800/80 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:text-white text-[#1a1a2e] placeholder:text-gray-400 dark:placeholder:text-gray-500 resize-none transition-all duration-300"
                       />
                     </div>
 
@@ -225,12 +229,15 @@ const Contact = () => {
                         : t('contact.send')}
                     </motion.button>
                   </form>
+                  </div>
                 </div>
               </motion.div>
 
               {/* Contact Info */}
               <motion.div variants={itemVariants} className="space-y-6">
-                <div className="glass rounded-xl p-6">
+                <div className="relative rounded-3xl overflow-hidden group">
+                  <div className="absolute inset-0 bg-white border border-blue-200/50 shadow-lg rounded-3xl dark:bg-transparent dark:border-transparent dark:shadow-none dark:bg-gradient-to-br dark:from-blue-500/20 dark:via-blue-600/20 dark:to-slate-700/20 dark:border-white/10 group-hover:dark:border-blue-400/40 transition-all duration-500" />
+                  <div className="relative p-6">
                   <h3 className="text-2xl font-bold mb-4 dark:text-white text-[#1a1a2e]">
                     {t('contact.info')}
                   </h3>
@@ -246,7 +253,7 @@ const Contact = () => {
                       <motion.div whileHover={{ scale: 1.1 }}>
                         <MdEmail className="text-xl" />
                       </motion.div>
-                      <span className="group-hover:underline">joriealsakran@gmail.com</span>
+                      <span>joriealsakran@gmail.com</span>
                     </a>
 
                     {/* Phone */}
@@ -257,7 +264,7 @@ const Contact = () => {
                       <motion.div whileHover={{ scale: 1.1 }}>
                         <FaPhoneAlt className="text-lg" />
                       </motion.div>
-                      <span className="group-hover:underline">+966 50 149 7394</span>
+                      <span>+966 50 149 7394</span>
                     </a>
 
                     {/* WhatsApp */}
@@ -270,7 +277,7 @@ const Contact = () => {
                       <motion.div whileHover={{ scale: 1.1 }}>
                         <FaWhatsapp className="text-xl" />
                       </motion.div>
-                      <span className="group-hover:underline">WhatsApp</span>
+                      <span>WhatsApp</span>
                     </a>
 
                     {/* LinkedIn */}
@@ -283,22 +290,22 @@ const Contact = () => {
                       <motion.div whileHover={{ scale: 1.1 }}>
                         <FaLinkedin className="text-xl" />
                       </motion.div>
-                      <span className="group-hover:underline">LinkedIn</span>
+                      <span>LinkedIn</span>
                     </a>
 
                     {/* Location */}
-                    <motion.div
-                      whileHover={{ scale: 1.05, x: -5 }}
-                      className="flex items-center gap-4 dark:text-white/80 text-[#1a1a2e]/80"
-                    >
+                    <div className="flex items-center gap-4 dark:text-white/80 text-[#1a1a2e]/80">
                       <MdLocationOn className="text-xl" />
                       <span>{t('contact.location')}</span>
-                    </motion.div>
+                    </div>
+                  </div>
                   </div>
                 </div>
 
                 {/* Working Hours */}
-                <div className="glass rounded-xl p-6">
+                <div className="relative rounded-3xl overflow-hidden group">
+                  <div className="absolute inset-0 bg-white border border-blue-200/50 shadow-lg rounded-3xl dark:bg-transparent dark:border-transparent dark:shadow-none dark:bg-gradient-to-br dark:from-blue-500/20 dark:via-blue-600/20 dark:to-slate-700/20 dark:border-white/10 group-hover:dark:border-blue-400/40 transition-all duration-500" />
+                  <div className="relative p-6">
                   <h3 className="text-2xl font-bold mb-4 dark:text-white text-[#1a1a2e]">
                     {t('contact.hours')}
                   </h3>
@@ -308,6 +315,7 @@ const Contact = () => {
                   <p className="dark:text-white/80 text-[#1a1a2e]/80">
                     {t('contact.weekend')}
                   </p>
+                  </div>
                 </div>
               </motion.div>
             </div>

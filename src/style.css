@@ -46,7 +46,7 @@
   }
   
   .dark .glass {
-    @apply bg-white/10 border-white/20;
+    @apply bg-[#1a1f3a]/95 border-slate-600/40;
   }
   
   :not(.dark) .glass {
@@ -93,4 +93,9 @@
 
 :not(.dark) ::-webkit-scrollbar-thumb:hover {
   @apply bg-blue-500;
+}
+
+.gap-4 {
+  gap: 1rem;
+  padding-left: 5px;
 }

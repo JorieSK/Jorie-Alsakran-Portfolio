@@ -3,7 +3,6 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useTheme } from '../contexts/ThemeContext'
 
 const CustomCursor = () => {
-  const [isHovering, setIsHovering] = useState(false)
   const [isClicking, setIsClicking] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const { theme } = useTheme()
@@ -30,16 +29,6 @@ const CustomCursor = () => {
     const handleMouseDown = () => setIsClicking(true)
     const handleMouseUp = () => setIsClicking(false)
 
-    // Add hover listeners to interactive elements
-    const handleMouseEnter = () => setIsHovering(true)
-    const handleMouseLeave = () => setIsHovering(false)
-
-    const interactiveElements = document.querySelectorAll('a, button, [role="button"]')
-    interactiveElements.forEach((el) => {
-      el.addEventListener('mouseenter', handleMouseEnter)
-      el.addEventListener('mouseleave', handleMouseLeave)
-    })
-
     window.addEventListener('mousemove', moveCursor)
     window.addEventListener('mousedown', handleMouseDown)
     window.addEventListener('mouseup', handleMouseUp)
@@ -48,10 +37,6 @@ const CustomCursor = () => {
       window.removeEventListener('mousemove', moveCursor)
       window.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('mouseup', handleMouseUp)
-      interactiveElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleMouseEnter)
-        el.removeEventListener('mouseleave', handleMouseLeave)
-      })
     }
   }, [cursorX, cursorY])
 
@@ -66,7 +51,7 @@ const CustomCursor = () => {
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
-          scale: isHovering ? 1.5 : isClicking ? 0.8 : 1,
+          scale: isClicking ? 0.8 : 1,
         }}
         transition={{ type: 'spring', stiffness: 500, damping: 28 }}
       />
@@ -75,7 +60,7 @@ const CustomCursor = () => {
         style={{
           x: cursorX,
           y: cursorY,
-          scale: isHovering ? 0 : 1,
+          scale: 1,
         }}
         transition={{ type: 'spring', stiffness: 500, damping: 28 }}
       />

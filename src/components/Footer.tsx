@@ -24,17 +24,17 @@ const Footer = () => {
       <div className="absolute inset-0 dark:bg-gradient-to-br dark:from-black dark:via-[#0a0e27] dark:to-[#1a1f3a] bg-gradient-to-br from-white via-blue-100 to-blue-50"></div>
 
       <div className="container mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="hidden md:flex items-center gap-6 flex-1" />
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="dark:text-white/60 text-[#1a1a2e]/60"
+            className="dark:text-white/60 text-[#1a1a2e]/60 text-center flex-1"
           >
             © {currentYear} Jorie Alsakran. {t('footer.rights')}
           </motion.p>
-
-          <div className="flex items-center gap-6">
+          <div className="flex items-center justify-center md:justify-end gap-6 flex-1">
             {socialLinks.map((social, index) => (
               <motion.a
                 key={social.name}

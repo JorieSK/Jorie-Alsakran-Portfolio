@@ -64,7 +64,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.sent': 'تم الإرسال! ✓',
     'contact.sending': 'جاري الإرسال...',
     'contact.error': 'حدث خطأ في إرسال الرسالة. يرجى المحاولة مرة أخرى.',
-    'contact.location': 'السعودية',
+    'contact.location': 'الرياض، المملكة العربية السعودية',
     
     // Footer
     'footer.rights': 'جميع الحقوق محفوظة.',
@@ -130,7 +130,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.sent': 'Sent! ✓',
     'contact.sending': 'Sending...',
     'contact.error': 'An error occurred while sending the message. Please try again.',
-    'contact.location': 'Saudi Arabia',
+    'contact.location': 'Riyadh, Saudi Arabia',
     
     // Footer
     'footer.rights': 'All rights reserved.',

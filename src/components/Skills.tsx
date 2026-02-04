@@ -95,7 +95,9 @@ const Skills = () => {
               variants={itemVariants}
               className="text-5xl md:text-6xl font-bold mb-4"
             >
-              <span className="text-gradient">{t('skills.title')}</span>
+              <span className="text-gradient dark:bg-gradient-to-r dark:from-blue-400 dark:via-blue-500 dark:to-slate-300 dark:bg-clip-text dark:text-transparent">
+                {t('skills.title')}
+              </span>
             </motion.h2>
             <motion.p
               variants={itemVariants}
@@ -115,12 +117,12 @@ const Skills = () => {
                 <motion.div
                   key={skill.name}
                   whileHover={{ y: -4, scale: 1.03 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 border border-blue-200/60 dark:border-white/10 shadow-sm shadow-blue-100/60 dark:shadow-none"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 border border-blue-200/60 dark:border-blue-500/30 shadow-sm shadow-blue-100/60 dark:shadow-none"
                 >
                   <span className="text-lg md:text-xl text-blue-600 dark:text-blue-400">
                     {skill.icon}
                   </span>
-                  <span className="text-sm md:text-base font-medium text-[#1a1a2e] dark:text-white">
+                  <span className="text-sm md:text-base font-medium text-[#1a1a2e] dark:text-blue-300">
                     {skill.name}
                   </span>
                 </motion.div>

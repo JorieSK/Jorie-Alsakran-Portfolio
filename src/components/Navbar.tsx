@@ -50,15 +50,15 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 py-4 bg-transparent"
     >
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto pl-0 pr-6">
         <div className="flex items-center justify-between">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection('hero')}
-            className="relative group cursor-pointer"
+            className="relative group cursor-pointer px-4 py-2"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-4">
               <motion.div
                 className="relative"
                 animate={{ rotate: [0, 360] }}
@@ -89,9 +89,9 @@ const Navbar = () => {
           
           <div className="flex items-center gap-6 md:gap-8">
             {/* Navigation Bar with all controls */}
-            <div className="hidden md:flex items-center">
-              <div className="relative px-6 py-2 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md rounded-full border border-blue-200/60 dark:border-slate-600/30 shadow-lg shadow-blue-100/50 dark:shadow-slate-900/50">
-                <div className="flex items-center gap-4 md:gap-6">
+            <div className="hidden sm:flex items-center">
+              <div className="relative px-6 md:px-8 py-3 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md rounded-full border border-blue-200/60 dark:border-slate-600/30 shadow-lg shadow-blue-100/50 dark:shadow-slate-900/50">
+                <div className="flex items-center gap-2 md:gap-4 lg:gap-6">
                   {/* Navigation Items */}
                   {navItems.map((item) => {
                     const isActive = activeSection === item.id
@@ -101,7 +101,7 @@ const Navbar = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => scrollToSection(item.id)}
-                        className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                        className={`relative px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all shrink-0 ${
                           isActive
                             ? 'text-white dark:text-white'
                             : 'text-slate-600 dark:text-white/90 text-[#1a1a2e]/70 dark:text-white/90'
@@ -121,14 +121,14 @@ const Navbar = () => {
                   })}
                   
                   {/* Separator */}
-                  <div className="h-6 w-px bg-blue-200/60 dark:bg-slate-600/50 mx-2" />
+                  <div className="h-5 md:h-6 w-px bg-blue-200/60 dark:bg-slate-600/50 mx-1 md:mx-2 shrink-0" />
                   
                   {/* Language Toggle */}
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={toggleLanguage}
-                    className="relative px-4 py-2 rounded-full text-sm font-medium text-slate-600 dark:text-white/90 text-[#1a1a2e]/70 dark:text-white/90 hover:text-blue-600 dark:hover:text-white hover:text-[#1a1a2e] dark:hover:text-white transition-colors"
+                    className="relative w-9 h-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-white/90 text-[#1a1a2e]/70 dark:text-white/90 hover:text-blue-600 dark:hover:text-white hover:text-[#1a1a2e] dark:hover:text-white transition-colors shrink-0"
                     aria-label="Toggle Language"
                   >
                     {language === 'ar' ? 'EN' : 'AR'}
@@ -139,7 +139,7 @@ const Navbar = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={toggleTheme}
-                    className="relative px-4 py-2 rounded-full text-sm font-medium text-slate-600 dark:text-white/90 text-[#1a1a2e]/70 dark:text-white/90 hover:text-blue-600 dark:hover:text-white hover:text-[#1a1a2e] dark:hover:text-white transition-colors"
+                    className="relative w-9 h-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-white/90 text-[#1a1a2e]/70 dark:text-white/90 hover:text-blue-600 dark:hover:text-white hover:text-[#1a1a2e] dark:hover:text-white transition-colors shrink-0"
                     aria-label="Toggle Theme"
                   >
                     <span className="text-base">
@@ -150,14 +150,14 @@ const Navbar = () => {
               </div>
             </div>
             
-            {/* Mobile controls */}
-            <div className="flex md:hidden items-center gap-4">
+            {/* Mobile controls - only on very small screens */}
+            <div className="flex sm:hidden items-center gap-4">
               {/* Language Toggle */}
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleLanguage}
-                className="px-3 py-1.5 bg-white/5 dark:bg-white/5 bg-white/70 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-white/80 border border-white/10 dark:border-white/10 border-blue-200/50 rounded dark:text-white text-[#1a1a2e] text-sm font-medium transition-all backdrop-blur-sm"
+                className="w-10 h-10 flex items-center justify-center bg-white/5 dark:bg-white/5 bg-white/70 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-white/80 border border-white/10 dark:border-white/10 border-blue-200/50 rounded dark:text-white text-[#1a1a2e] text-sm font-medium transition-all backdrop-blur-sm"
                 aria-label="Toggle Language"
               >
                 {language === 'ar' ? 'EN' : 'AR'}
@@ -168,7 +168,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleTheme}
-                className="p-2 bg-white/5 dark:bg-white/5 bg-white/70 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-white/80 border border-white/10 dark:border-white/10 border-blue-200/50 rounded transition-all backdrop-blur-sm"
+                className="w-10 h-10 flex items-center justify-center bg-white/5 dark:bg-white/5 bg-white/70 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-white/80 border border-white/10 dark:border-white/10 border-blue-200/50 rounded transition-all backdrop-blur-sm"
                 aria-label="Toggle Theme"
               >
                 <span className="dark:text-white text-[#1a1a2e] text-lg">

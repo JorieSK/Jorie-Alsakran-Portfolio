@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const Hero = () => {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
   const [displayedText, setDisplayedText] = useState('')
   const [showCursor, setShowCursor] = useState(true)
@@ -128,7 +128,7 @@ const Hero = () => {
                 className="text-5xl md:text-6xl lg:text-7xl font-bold dark:text-white text-[#1a1a2e] leading-tight"
               >
                 <span className="block">{t('hero.greeting')}</span>
-                <span className="block bg-gradient-to-r from-blue-500 via-blue-300 to-white dark:from-blue-500 dark:via-blue-300 dark:to-white from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent">
+                <span className={`block ${language === 'ar' ? 'text-blue-800 dark:text-blue-200' : 'bg-gradient-to-r from-blue-500 via-blue-300 to-white dark:from-blue-500 dark:via-blue-300 dark:to-white from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent'}`}>
                   {t('hero.name')}
                 </span>
                 <span className="block dark:text-white text-[#1a1a2e]">
@@ -151,22 +151,31 @@ const Hero = () => {
             {/* Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap gap-4"
+              className="flex flex-nowrap gap-3"
             >
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-full transition-colors whitespace-nowrap"
               >
-                {t('hero.workTogether')}
-                <span>→</span>
+                {language === 'ar' ? (
+                  <>
+                    <span>→</span>
+                    {t('hero.workTogether')}
+                  </>
+                ) : (
+                  <>
+                    {t('hero.workTogether')}
+                    <span>→</span>
+                  </>
+                )}
               </motion.a>
               <motion.a
                 href="#projects"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-white/5 dark:bg-white/5 bg-white/70 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-white/80 border border-white/20 dark:border-white/20 border-blue-200/50 dark:text-white text-[#1a1a2e] font-semibold rounded-lg transition-all backdrop-blur-sm"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-800 dark:text-white text-sm font-medium rounded-full border border-slate-200/80 dark:border-white/20 transition-colors whitespace-nowrap"
               >
                 {t('hero.viewProjects')}
               </motion.a>

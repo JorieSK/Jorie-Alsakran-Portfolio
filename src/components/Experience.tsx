@@ -162,7 +162,9 @@ const Experience = () => {
               variants={itemVariants}
               className="text-5xl md:text-6xl font-bold mb-4"
             >
-              <span className="text-gradient">{t('experience.title')}</span>
+              <span className="text-gradient dark:bg-gradient-to-r dark:from-blue-400 dark:via-blue-500 dark:to-slate-300 dark:bg-clip-text dark:text-transparent">
+                {t('experience.title')}
+              </span>
             </motion.h2>
             <motion.p
               variants={itemVariants}
@@ -200,17 +202,11 @@ const Experience = () => {
                   <div className="md:ml-16">
                     <motion.div
                       whileHover={{ scale: 1.02, y: -5 }}
-                      className="glass rounded-2xl p-6 md:p-8 relative overflow-hidden group"
+                      className="relative rounded-3xl overflow-hidden group"
                     >
-                      {/* Hover Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-blue-600/10 dark:from-blue-400/10 dark:via-indigo-400/10 dark:to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-blue-600/10 to-slate-700/10 dark:from-blue-500/20 dark:via-blue-600/20 dark:to-slate-700/20 rounded-3xl backdrop-blur-xl border border-white/20 dark:border-white/10 group-hover:border-blue-300/40 dark:group-hover:border-blue-400/40 transition-all duration-500" />
 
-                      {/* Date Badge */}
-                      <div className="flex items-center gap-0 mb-5 relative z-10">
-                        
-
-                      </div>
-
+                      <div className="relative p-6 md:p-8">
                       {/* Job Title */}
                       <h3 className="text-2xl md:text-3xl font-bold dark:text-white text-[#1a1a2e] mb-2 relative z-10">
                         {exp.title[language]}
@@ -238,6 +234,7 @@ const Experience = () => {
                           </li>
                         ))}
                       </ul>
+                      </div>
                     </motion.div>
                   </div>
                 </motion.div>

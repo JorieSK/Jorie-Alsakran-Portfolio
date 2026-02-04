@@ -76,7 +76,7 @@ const Projects = ({ onProjectClick }: ProjectsProps) => {
   return (
     <section id="projects" className="py-24 px-6 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 dark:bg-gradient-to-br dark:from-black dark:via-[#0a0e27] dark:to-[#1a1f3a] bg-gradient-to-br from-white via-blue-50/50 to-slate-50/30"></div>
+      <div className="absolute inset-0 dark:bg-gradient-to-br dark:from-black dark:via-[#0a0e27] dark:to-[#1a1f3a] bg-gradient-to-br from-white via-blue-100 to-blue-50"></div>
       
       <div className="container mx-auto relative z-10 max-w-7xl">
         <motion.div
