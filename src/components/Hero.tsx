@@ -125,7 +125,7 @@ const Hero = () => {
             <div className="space-y-4">
               <motion.h1
                 variants={itemVariants}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold dark:text-white text-[#1a1a2e] leading-tight"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold dark:text-white text-[#1a1a2e] leading-tight"
               >
                 <span className="block">{t('hero.greeting')}</span>
                 <span className={`block ${language === 'ar' ? 'text-blue-800 dark:text-blue-200' : 'bg-gradient-to-r from-blue-500 via-blue-300 to-white dark:from-blue-500 dark:via-blue-300 dark:to-white from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent'}`}>
@@ -200,7 +200,7 @@ const Hero = () => {
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <span className="text-white/60 text-xs ml-4">developer.ts</span>
+                <span className="text-white/60 text-xs ml-4">engineer.js</span>
               </div>
 
               {/* Code Content */}
@@ -208,44 +208,41 @@ const Hero = () => {
                 <div className="space-y-2">
                   <div>
                     <span className="text-purple-400">class</span>{' '}
-                    <span className="text-cyan-400">Developer</span>{' '}
+                    <span className="text-cyan-400">Engineer</span>{' '}
                     <span className="text-white">{'{'}</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-purple-400">public</span>{' '}
-                    <span className="text-cyan-400">$name</span>{' '}
+                    <span className="text-cyan-400">name</span>{' '}
                     <span className="text-white">=</span>{' '}
-                    <span className="text-green-400">'{t('hero.name')}'</span>
+                    <span className="text-green-400">'Jorie Alsakran'</span>
                     <span className="text-white">;</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-purple-400">public</span>{' '}
-                    <span className="text-cyan-400">$role</span>{' '}
+                    <span className="text-cyan-400">role</span>{' '}
                     <span className="text-white">=</span>{' '}
-                    <span className="text-green-400">'{t('hero.title')}'</span>
+                    <span className="text-green-400">'AI Engineer & Software Developer'</span>
                     <span className="text-white">;</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-purple-400">public</span>{' '}
-                    <span className="text-cyan-400">$passion</span>{' '}
+                    <span className="text-cyan-400">passion</span>{' '}
                     <span className="text-white">=</span>{' '}
                     <span className="text-white">[</span>
                   </div>
                   <div className="pl-8 space-y-1">
                     <div>
-                      <span className="text-green-400">'React'</span>
+                      <span className="text-green-400">'Generative AI'</span>
                       <span className="text-white">,</span>
                     </div>
                     <div>
-                      <span className="text-green-400">'TypeScript'</span>
+                      <span className="text-green-400">'RAG Systems'</span>
+                      <span className="text-white">,</span>
+                    </div>
+                    <div>
+                      <span className="text-green-400">'LLM Applications'</span>
                       <span className="text-white">,</span>
                     </div>
                     <div>
                       <span className="text-green-400">'Full Stack'</span>
-                      <span className="text-white">,</span>
-                    </div>
-                    <div>
-                      <span className="text-green-400">'Learning'</span>
                     </div>
                   </div>
                   <div className="pl-4">

@@ -9,15 +9,49 @@ import {
   FaDocker,
   FaAws,
   FaBrain,
+  FaRobot,
+  FaSearch,
+  FaDatabase,
+  FaPenFancy,
+  FaProjectDiagram,
+  FaCogs,
+  FaComments,
+  FaGlobe,
 } from 'react-icons/fa'
-import { SiNextdotjs, SiPostgresql, SiFigma, SiGraphql, SiJest, SiJavascript, SiHtml5, SiCss3, SiMongodb, SiFirebase, SiPython } from 'react-icons/si'
-import { MdBuild } from 'react-icons/md'
+import { SiNextdotjs, SiPostgresql, SiFigma, SiGraphql, SiJest, SiJavascript, SiHtml5, SiCss3, SiMongodb, SiFirebase, SiPython, SiOpenai, SiLangchain, SiHuggingface } from 'react-icons/si'
+import { MdBuild, MdAutoAwesome, MdTune, MdAssessment } from 'react-icons/md'
 
 interface Skill {
   name: string
   level: number
   icon: React.ReactElement
 }
+
+interface AiSkill {
+  ar: string
+  en: string
+  icon: React.ReactElement
+}
+
+const skillPillClass =
+  'inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 border border-blue-200/60 dark:border-blue-500/30 shadow-sm shadow-blue-100/60 dark:shadow-none'
+
+const aiSkills: AiSkill[] = [
+  { en: 'Generative AI', ar: 'الذكاء الاصطناعي التوليدي', icon: <MdAutoAwesome /> },
+  { en: 'RAG Systems', ar: 'أنظمة الـ RAG', icon: <FaSearch /> },
+  { en: 'Vector Databases (FAISS / Chroma)', ar: 'قواعد البيانات المتجهة (FAISS / Chroma)', icon: <FaDatabase /> },
+  { en: 'OpenAI API', ar: 'واجهة برمجة تطبيقات OpenAI', icon: <SiOpenai /> },
+  { en: 'Prompt Engineering', ar: 'هندسة الأوامر (Prompt Engineering)', icon: <FaPenFancy /> },
+  { en: 'Agentic AI', ar: 'الذكاء الاصطناعي الوكيل (Agentic AI)', icon: <FaRobot /> },
+  { en: 'LangGraph', ar: 'إطار العمل LangGraph', icon: <FaProjectDiagram /> },
+  { en: 'Autonomous AI Agents', ar: 'الأنظمة والوكلاء المستقلون', icon: <FaCogs /> },
+  { en: 'LLMs (Large Language Models)', ar: 'النماذج اللغوية الكبيرة (LLMs)', icon: <FaComments /> },
+  { en: 'LangChain', ar: 'إطار العمل LangChain', icon: <SiLangchain /> },
+  { en: 'Transformers & BERT', ar: 'نماذج Transformers & BERT', icon: <SiHuggingface /> },
+  { en: 'Fine-Tuning (PEFT)', ar: 'ضبط النماذج الدقيق (PEFT)', icon: <MdTune /> },
+  { en: 'multilingual-e5-large embeddings', ar: 'مصفوفات الـ Embeddings المتعددة اللغات', icon: <FaGlobe /> },
+  { en: 'LLM Evaluation (Ragas / LLM-as-Judge)', ar: 'تقييم النماذج (Ragas / LLM-as-Judge)', icon: <MdAssessment /> },
+]
 
 const skills: Skill[] = [
   { name: 'React (TypeScript)', level: 90, icon: <FaReact /> },
@@ -49,7 +83,7 @@ const extraSkills = [
 
 const Skills = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -107,7 +141,30 @@ const Skills = () => {
             </motion.p>
           </motion.div>
 
-          {/* Main Skills - Compact pill list */}
+          {/* AI Skills */}
+          <motion.div
+            variants={itemVariants}
+            className="max-w-5xl mx-auto mb-12 md:mb-16"
+          >
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              {aiSkills.map((skill) => (
+                <motion.div
+                  key={skill.en}
+                  whileHover={{ y: -4, scale: 1.03 }}
+                  className={skillPillClass}
+                >
+                  <span className="text-lg md:text-xl text-blue-600 dark:text-blue-400">
+                    {skill.icon}
+                  </span>
+                  <span className="text-sm md:text-base font-medium text-[#1a1a2e] dark:text-blue-300">
+                    {skill[language]}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Main Skills */}
           <motion.div
             variants={itemVariants}
             className="max-w-5xl mx-auto mb-12 md:mb-16"
@@ -117,7 +174,7 @@ const Skills = () => {
                 <motion.div
                   key={skill.name}
                   whileHover={{ y: -4, scale: 1.03 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 border border-blue-200/60 dark:border-blue-500/30 shadow-sm shadow-blue-100/60 dark:shadow-none"
+                  className={skillPillClass}
                 >
                   <span className="text-lg md:text-xl text-blue-600 dark:text-blue-400">
                     {skill.icon}
@@ -130,7 +187,7 @@ const Skills = () => {
             </div>
           </motion.div>
 
-          {/* Extra Skills - Small badges */}
+          {/* Extra Skills */}
           <motion.div
             variants={itemVariants}
             className="flex flex-wrap justify-center gap-2 md:gap-3 max-w-4xl mx-auto"

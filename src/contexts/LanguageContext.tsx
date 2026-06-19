@@ -21,15 +21,15 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.greeting': 'مرحباً، أنا',
     'hero.name': 'جوري السكران',
-    'hero.title': 'مهندسة برمجيات',
-    'hero.description': 'أبتكر حلولاً رقمية مبتكرة تجمع بين الجمال والأداء',
+    'hero.title': 'مهندسة ذكاء اصطناعي ومطورة برمجيات',
+    'hero.description': 'متخصصة في الذكاء الاصطناعي التوليدي، تطبيقات النماذج اللغوية الكبيرة (LLMs)، وأنظمة الـ RAG المتقدمة. أربط بين هندسة البرمجيات الصلبة وبناء أنابيب الذكاء الاصطناعي الذكية.',
     'hero.available': 'متاح للمشاريع الجديدة',
     'hero.viewProjects': 'شاهد أعمالي',
     'hero.contact': 'تواصل معي',
     'hero.workTogether': 'لنعمل معاً',
     
     // Navbar
-    'nav.developer': ' مطور',
+    'nav.developer': 'مهندسة',
     
     // Projects
     'projects.category': 'المشاريع',
@@ -46,6 +46,11 @@ const translations: Record<Language, Record<string, string>> = {
     'experience.careerPath': 'المسار المهني',
     'experience.title': 'الخبرات العملية',
     'experience.subtitle': 'رحلتي المهنية في تطوير البرمجيات و DevOps',
+
+    // Certifications
+    'certifications.category': 'التعلم المستمر',
+    'certifications.title': 'المعسكرات والشهادات التدريبية',
+    'certifications.subtitle': 'برامج تدريبية مكثفة وشهادات مهنية في الذكاء الاصطناعي وهندسة البرمجيات',
     
     // Contact
     'contact.category': 'التواصل',
@@ -86,16 +91,16 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Hero
     'hero.greeting': "Hello, I'm",
-    'hero.name': 'Jorie Alsakran',
-    'hero.title': 'Software Engineer',
-    'hero.description': 'I create innovative digital solutions that combine beauty and performance',
+    'hero.name': 'Joorie Alsakran',
+    'hero.title': 'AI Engineer & Software Developer',
+    'hero.description': 'Specializing in Generative AI, LLM applications, and production-grade RAG systems. Bridging the gap between robust software engineering and intelligent AI pipelines.',
     'hero.available': 'Available for new projects',
     'hero.viewProjects': 'View My Work',
     'hero.contact': 'Contact Me',
     'hero.workTogether': "Let's Work Together",
     
     // Navbar
-    'nav.developer': 'Developer',
+    'nav.developer': 'Engineer',
     
     // Projects
     'projects.category': 'PORTFOLIO',
@@ -112,6 +117,11 @@ const translations: Record<Language, Record<string, string>> = {
     'experience.careerPath': 'CAREER PATH',
     'experience.title': 'Work Experience',
     'experience.subtitle': 'My professional journey in software development and DevOps',
+
+    // Certifications
+    'certifications.category': 'CONTINUOUS LEARNING',
+    'certifications.title': 'Bootcamps & Certifications',
+    'certifications.subtitle': 'Intensive training programs and professional credentials in AI and software engineering',
     
     // Contact
     'contact.category': 'GET IN TOUCH',

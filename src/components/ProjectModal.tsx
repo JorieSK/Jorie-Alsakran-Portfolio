@@ -10,6 +10,7 @@ interface Project {
   icon: IconType
   technologies: string[]
   longDescription: { ar: string; en: string }
+  architecturePoints?: { ar: string[]; en: string[] }
   link?: string
   github?: string
 }
@@ -21,6 +22,7 @@ interface ProjectModalProps {
 
 const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
   const { language, t } = useLanguage()
+  const architecturePoints = project.architecturePoints?.[language]
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -43,10 +45,10 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.8, opacity: 0, y: 50 }}
           onClick={(e) => e.stopPropagation()}
-          className="relative rounded-2xl max-w-2xl w-full overflow-hidden bg-white dark:bg-slate-900 shadow-2xl"
+          className="relative rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 shadow-2xl"
         >
           {/* Top Section - Light blue gradient */}
-          <div className="relative h-36 md:h-44 overflow-hidden flex items-center justify-center bg-gradient-to-b from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/50 rounded-t-2xl">
+          <div className="relative h-36 md:h-44 overflow-hidden flex items-center justify-center bg-gradient-to-b from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/50 rounded-t-2xl sticky top-0 z-10">
             {/* Close Button */}
             <button
               onClick={onClose}
@@ -94,6 +96,30 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             >
               {project.longDescription[language]}
             </motion.p>
+
+            {architecturePoints && architecturePoints.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45 }}
+                className="mb-6"
+              >
+                <h3 className="text-base font-bold mb-3 text-slate-800 dark:text-white">
+                  {language === 'ar' ? 'النقاط التقنية المعمارية:' : 'Technical Architecture:'}
+                </h3>
+                <ul className="space-y-3">
+                  {architecturePoints.map((point) => (
+                    <li
+                      key={point.slice(0, 40)}
+                      className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex gap-2"
+                    >
+                      <span className="text-blue-600 dark:text-blue-400 mt-1 shrink-0">•</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
 
             {/* Technologies */}
             <motion.div

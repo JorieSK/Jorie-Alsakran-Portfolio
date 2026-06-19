@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useLanguage } from '../contexts/LanguageContext'
 import type { IconType } from 'react-icons'
-import { FaBrain, FaCalculator } from 'react-icons/fa'
+import { FaBrain, FaCalculator, FaBalanceScale, FaSeedling } from 'react-icons/fa'
 
 export interface Project {
   id: number
@@ -11,6 +11,7 @@ export interface Project {
   icon: IconType
   technologies: string[]
   longDescription: { ar: string; en: string }
+  architecturePoints?: { ar: string[]; en: string[] }
   link?: string
   github?: string
 }
@@ -18,20 +19,114 @@ export interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: {
+      ar: 'مُدرِك - مساعد قانوني ذكي باللغة العربية (نظام RAG)',
+      en: 'Modrik - Arabic-First Legal AI Assistant (RAG)',
+    },
+    description: {
+      ar: 'كل عامل يستحق أن يعرف حقوقه القانونية بدقة. مشروع مُدرِك هو مساعد قانوني ذكي متقدم مبني خصيصاً للتعامل مع نظام العمل السعودي باللغة العربية كأولوية قصوى.',
+      en: 'Every worker deserves to know their rights. Modrik is an advanced, production-grade Arabic-first AI legal assistant built specifically for Saudi Labor Law.',
+    },
+    icon: FaBalanceScale,
+    technologies: [
+      'Generative AI',
+      'NLP / LLMs',
+      'RAG',
+      'FAISS',
+      'LangChain',
+      'OpenAI API',
+      'FastAPI',
+      'Streamlit',
+      'Docker',
+    ],
+    longDescription: {
+      ar: 'كل عامل يستحق أن يعرف حقوقه القانونية بدقة. مشروع مُدرِك هو مساعد قانوني ذكي متقدم مبني خصيصاً للتعامل مع نظام العمل السعودي باللغة العربية كأولوية قصوى. يتيح النظام للمستخدمين الاستفسار عن حقوقهم باللغة العربية الدارجة أو رفع عقود العمل وملفات القضايا للحصول على تحليل مخصص وإجابات قانونية دقيقة وموثوقة مدعومة بأرقام المواد النظامية، مع مراقبة حالة المواد سواء كانت نشطة، معدلة، أو ملغاة.',
+      en: 'Every worker deserves to know their rights. Modrik is an advanced, production-grade Arabic-first AI legal assistant built specifically for Saudi Labor Law. It allows users to query their employment rights in plain Arabic or upload actual contracts/case documents to receive highly personalized, legally grounded answers cited by exact article numbers, navigating through active, amended, or repealed legal states.',
+    },
+    architecturePoints: {
+      en: [
+        'Smart Law Ingestion: Ingests three distinct states of Saudi Labor Law via an automated pipeline (pandas + openpyxl), dynamically tagging articles as Active, Amended, or Repealed.',
+        'Advanced Chunking Strategy: Implemented a smart-chunking algorithm based on legal definition markers and paragraph breaks (600-character limit) to preserve strict legal context and headers across all sub-chunks.',
+        'Streaming Architecture: Utilizes OpenAI\'s GPT-4o-mini to stream responses token-by-token, dynamically injecting metadata and cross-referencing exact article numbers.',
+        'Source Transparency: Built a custom sources popover showing exact retrieved legal articles mapped with their semantic similarity scores (%).',
+        'Local In-Memory Inference: Runs the \'multilingual-e5-large\' embedding model completely locally within the container to understand dense, formal legal Arabic text at zero per-query API cost.',
+        'Vector Store Architecture: Built on top of FAISS (using IndexFlatIP over normalized vectors) pre-warmed at container startup for zero-latency retrieval.',
+        'Privacy Guard (PII Guard): Engineered a strict regex-driven preprocessing pipeline (core/pii_guard.py) that scans inputs and contracts to redact Saudi National IDs, Iqamas, and IBANs, replacing them with safe tokens before any text leaves the session.',
+        'Software Engineering & Testing Excellence: Shipped with a full automated test suite via pytest, verifying legal document parsing via PyMuPDF, mocking OpenAI streams, and executing strict validation on all PII redaction patterns. Fully dockerized via docker-compose.',
+        'Agentic AI Vision: Currently scaling the system architecture using LangGraph to support autonomous multi-turn case memory, allowing the AI to act as an autonomous legal investigator tracking complex cases across multiple steps.',
+      ],
+      ar: [
+        'معالجة ذكية للأنظمة التشريعية: بناء آلية أتمتة لمعالجة وقراءة نظام العمل السعودي من مصادر متعددة باستخدام (pandas + openpyxl)، وتصنيف المواد برمجياً لتظهر للنموذج بدقة: (نظام نشط وسارٍ حالياً)، (هذه المادة معدّلة)، أو (هذه المادة ملغاة ولا تُطبَّق حالياً).',
+        'استراتيجية التقسيم الذكي (Smart Chunking): تطوير خوارزمية لتقسيم النصوص القانونية الطويلة بناءً على علامات التعريف وفقرات القوانين (بحد أقصى 600 حرف) لضمان عدم فقدان سياق المادة الرئيسي أو تداخل المعاني.',
+        'بث الإجابات التفاعلي (Streaming): الاعتماد على نموذج GPT-4o-mini لبث الإجابات للمستخدم حرفاً بحرف مع إدراج أرقام المواد القانونية والإشارات المرجعية تلقائياً.',
+        'الشفافية ودقة المصادر: واجهة مخصصة تعرض للمستخدم المصادر الدقيقة التي استند إليها الذكاء الاصطناعي مع توضيح نسبة التطابق الدلالي (%) لكل مادة مسترجعة.',
+        'استضافة النماذج محلياً (Local Inference): تشغيل نموذج المؤثرات والمصفوفات المتقدم multilingual-e5-large محلياً بالكامل داخل الحاوية (Container) لضمان فهم الصياغات القانونية العربية الكثيفة والرسمية وتحقيق تكلفة صفرية لكل استعلام.',
+        'بنية قواعد البيانات المتجهة: استخدام مستودع FAISS المعتمد على متجهات مسبقة التحميل (Pre-warmed) عند بدء تشغيل النظام لضمان استرجاع فوري ودون أي تأخير.',
+        'حماية الخصوصية وحوكمة البيانات (PII Guard): هندسة نظام حماية ذكي (core/pii_guard.py) يعتمد على تعابير الـ Regex البرمجية لفحص النصوص والعقود المرفوعة وحجب أرقام الهوية الوطنية، الإقامات، وأرقام الآيبان البنكية وتحويلها إلى رموز آمنة قبل خروجها من الجلسة المحلية.',
+        'جودة البرمجيات والاختبارات الفنية: تغطية جميع الدوال والخدمات باختبارات برمجية مؤتمتة عبر pytest للتأكد من سلامة تقسيم النصوص، واختبار محاكاة المستندات عبر PyMuPDF ومحاكاة بث ردود OpenAI. تجهيز المشروع بالكامل للعمل عبر حاويات docker-compose.',
+        'رؤية الوكلاء الأذكياء (Agentic AI): يتم حالياً العمل على توسيع البنية البرمجية للمشروع باستخدام LangGraph لدعم الذاكرة متعددة الجولات والوكلاء المستقلين، مما يتيح للذكاء الاصطناعي العمل كـ \'محقق قانوني مستقل\' يتتبع تفاصيل القضية عبر خطوات وجلسات متعددة.',
+      ],
+    },
+  },
+  {
+    id: 2,
+    title: {
+      ar: 'قاعدة المعارف الزراعية: مقارنة وتقييم أنظمة الـ RAG ضد النماذج الأساسية',
+      en: 'AI Engineering Capstone: RAG vs Base LLM Benchmark',
+    },
+    description: {
+      ar: 'حل واحدة من أكبر مشكلات الذكاء الاصطناعي في قطاع الأعمال وهي \'هلوسة النماذج اللغوية\'، من خلال تصميم وتنفيذ إطار عمل تقييمي صارم وشامل.',
+      en: 'Solved the critical industry challenge of LLM hallucination by designing and executing a rigorous, end-to-end evaluation framework.',
+    },
+    icon: FaSeedling,
+    technologies: [
+      'NLP / LLMs',
+      'LLM Evaluation',
+      'Ragas',
+      'LLM-as-Judge',
+      'Groundedness Optimization',
+      'PyTorch',
+      'Data Engineering',
+    ],
+    longDescription: {
+      ar: 'حل واحدة من أكبر مشكلات الذكاء الاصطناعي في قطاع الأعمال وهي \'هلوسة النماذج اللغوية\'، من خلال تصميم وتنفيذ إطار عمل تقييمي صارم وشامل. يركز هذا المشروع على قياس واختبار نظام RAG مخصص للمستندات الزراعية ومقارنته برمجياً وإحصائياً بالنماذج اللغوية الأساسية (Base LLM) لإثبات مدى دقة وجودة الإجابات وتقليل نسب الهلوسة.',
+      en: 'Solved the critical industry challenge of LLM hallucination by designing and executing a rigorous, end-to-end evaluation framework. This capstone project benchmarks a specialized Agriculture RAG system against a Base Large Language Model, mathematically and empirically proving the reduction of hallucinations and the improvement of context precision using advanced evaluation metrics.',
+    },
+    architecturePoints: {
+      en: [
+        'End-to-End Evaluation Architecture: Independently engineered the comprehensive evaluation pipeline leveraging the Ragas framework and advanced LLM-as-Judge methodologies.',
+        'Faithfulness & Groundedness Scoring: Implemented mathematical checks to measure Faithfulness (ensuring the generated answer is strictly derived from the retrieved context, eliminating hallucinations).',
+        'Context Precision & Recall: Designed validation steps to evaluate the retrieval layer, calculating Context Precision (whether the most relevant agronomy chunks are ranked highest) and Context Recall (whether the system retrieved all necessary data to answer the prompt).',
+        'Quantifying Hallucination Rates: Built automated scripts to track and quantify the exact Hallucination Rate of the model across complex, domain-specific agriculture documentation.',
+        'RAG vs. Base LLM Experimentation: Conducted extensive benchmark experiments comparing a vanilla Large Language Model against the newly built RAG pipeline, transforming technical quality insights into concrete statistical data.',
+        'Data Ingestion & Cleaning Validation: Oversaw the parsing, cleaning, and smart-chunking validation of complex agronomy documents to ensure the source data met the quality thresholds required for high-accuracy evaluation.',
+      ],
+      ar: [
+        'بناء منظومة التقييم (Evaluation Pipeline): هندسة وتصميم نظام تقييم متكامل من البداية إلى النهاية بالاعتماد على إطار عمل Ragas المتقدم وتطبيق مفاهيم LLM-as-Judge (استخدام نماذج ذكاء اصطناعي لتقييم واختبار نماذج أخرى).',
+        'قياس مدى الموثوقية والأمان (Faithfulness): تطوير معايير برمجية للتحقق من أن الإجابة المولدة مستندة بالكامل وبشكل صلب على السياق المسترجع (Context) من المستندات، لضمان تصفير نسب الهلوسة العشوائية.',
+        'حساب دقة استرجاع السياق (Context Precision & Recall): برمجة أدوات لقياس كفاءة محرك البحث المتجه، للتأكد من أن المعلومات الأكثر أهمية تصعد للمراتب الأولى في نتائج البحث (Context Precision)، وأن النظام يسترجع كامل المعلومات المطلوبة لحل الاستفسار (Context Recall).',
+        'حساب معدل الهلوسة (Hallucination Rate): بناء برمجيات لمراقبة وقياس نسب الهلوسة وتحليل الأخطاء في الإجابات المتعلقة بالنصوص الزراعية التخصصية المعقدة.',
+        'المقارنة التجريبية (Benchmarking): إجراء اختبارات مقارنة مكثفة بين أداء النموذج اللغوي التقليدي بمفرده وأدائه بعد دعمه بقاعدة المعارف ونظام الـ RAG، وتحويل الجودة الفنية إلى أرقام ومؤشرات إحصائية دقيقة تثبت زيادة درجة الموثوقية (Groundedness).',
+        'تنظيف وتجهيز البيانات للاختبار: الإشراف على عمليات معالجة، تنظيف، وتقسيم (Chunking) الوثائق الزراعية للتأكد من جودتها وصلاحيتها للدخول في خط اختبار القياس.',
+      ],
+    },
+  },
+  {
+    id: 3,
     title: { ar: 'BLOSSOM', en: 'Blossom' },
     description: {
       ar: 'منصة تحليل مشاعر مدعومة بالذكاء الاصطناعي (هدى) لفهم وتحليل مشاعرك اليومية.',
       en: 'AI-powered emotion analysis platform (Huda Assistant) that helps you understand and analyze your daily emotions.',
     },
     icon: FaBrain,
-    technologies: ['Python', 'OpenAI - ChatGPT-4', 'Prompt Engineering', 'React', 'MongoDB', 'Firebase', 'TailwindCSS', ],
+    technologies: ['Generative AI', 'NLP / LLMs', 'Python', 'OpenAI - ChatGPT-4', 'Prompt Engineering', 'React', 'MongoDB', 'Firebase', 'TailwindCSS'],
     longDescription: {
       ar: 'مشروع التخرج Blossom: منصة متكاملة تعتمد على مساعد هدى المدعوم بـ ChatGPT-4 وتحسين البرومبتات (Prompt Engineering) لتحليل مشاعرك اليومية، تقديم اقتراحات، وتلخيص حالتك العاطفية مع واجهة حديثة وسهلة الاستخدام.',
       en: 'Graduate project Blossom: an end-to-end platform powered by Huda Assistant using ChatGPT-4 and advanced prompt engineering to analyze user emotions, provide suggestions, and summarize emotional state with a modern, user-friendly interface.',
     },
   },
   {
-    id: 2,
+    id: 4,
     title: { ar: 'YMoney', en: 'YMoney' },
     description: {
       ar: 'منصّة مالية لحساب الزكاة، تقدير الضرائب، وتحويل العملات.',
