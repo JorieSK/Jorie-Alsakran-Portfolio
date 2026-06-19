@@ -1,117 +1,125 @@
 # Jorie Alsakran - Portfolio
 
-Interactive personal portfolio built with React, TailwindCSS, and Framer Motion.
+Personal portfolio showcasing AI engineering projects, technical skills, and professional experience.
 
-## ✨ Features
+**Live site:** [https://joriesk.github.io/Jorie-Alsakran-Portfolio/](https://joriesk.github.io/Jorie-Alsakran-Portfolio/)
 
-- 🎨 Modern and attractive design with advanced visual effects
-- 🚀 Smooth animations and interactive effects using Framer Motion
-- 📱 Fully responsive for all devices
-- ⚡ High performance and fast loading
-- 🎭 Typing animation in Hero Section
-- 🎯 Scroll animations on scroll
-- 🎪 Modal animations for projects
-- 📊 Animated progress bars for skills
-- 🌙 Dark/Light theme toggle
-- 🌍 Arabic/English language support
+Built with React, TypeScript, TailwindCSS, and Framer Motion.
 
-## 🛠️ Technologies Used
+## Features
 
-- **React** - JavaScript library for building user interfaces
-- **TypeScript** - For writing safe and organized code
-- **Vite** - Fast build tool
-- **TailwindCSS** - CSS framework for rapid design
-- **Framer Motion** - Library for animations and motion
-- **React Intersection Observer** - To trigger animations on appearance
-- **Web3Forms** - For contact form email delivery
+- Modern, responsive layout for desktop and mobile
+- Smooth scroll and entrance animations via Framer Motion
+- Typing animation in the hero section
+- Project detail modals with bilingual content
+- Dark/light theme toggle
+- Full Arabic and English support (RTL/LTR)
 
-## 🚀 Getting Started
+## Tech Stack
+
+- **React** — UI library
+- **TypeScript** — Type-safe development
+- **Vite** — Build tooling
+- **TailwindCSS** — Styling
+- **Framer Motion** — Animations
+- **React Intersection Observer** — Scroll-triggered effects
+- **Web3Forms** — Contact form delivery
+
+## Getting Started
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
-2. Run the project in development mode:
+2. Run in development mode:
+
 ```bash
 npm run dev
 ```
 
-3. Build the project for production:
+3. Build for production:
+
 ```bash
 npm run build
 ```
 
-4. Preview the build:
+4. Preview the production build:
+
 ```bash
 npm run preview
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
 ├── components/
-│   ├── Hero.tsx          # Main section with typing animation
-│   ├── Navbar.tsx        # Navigation bar
-│   ├── Projects.tsx      # Projects section
-│   ├── ProjectModal.tsx  # Project details modal
-│   ├── Skills.tsx        # Skills section
-│   ├── Experience.tsx    # Work experience section
-│   ├── Contact.tsx       # Contact section
-│   ├── Footer.tsx         # Footer
-│   ├── CustomCursor.tsx  # Custom cursor effect
-│   └── ScrollProgress.tsx # Scroll progress indicator
+│   ├── Hero.tsx            # Hero section with typing animation
+│   ├── Navbar.tsx          # Navigation bar
+│   ├── Projects.tsx        # Projects section
+│   ├── ProjectModal.tsx    # Project details modal
+│   ├── Skills.tsx          # Skills section
+│   ├── Experience.tsx      # Work experience
+│   ├── Certifications.tsx  # Bootcamps and certifications
+│   ├── Contact.tsx         # Contact section
+│   ├── Footer.tsx          # Footer
+│   ├── CustomCursor.tsx    # Custom cursor effect
+│   └── ScrollProgress.tsx  # Scroll progress indicator
 ├── contexts/
-│   ├── ThemeContext.tsx  # Theme management
-│   └── LanguageContext.tsx # Language management
-├── App.tsx               # Main component
-├── main.tsx              # Entry point
-└── style.css             # Global styles
+│   ├── ThemeContext.tsx    # Theme management
+│   └── LanguageContext.tsx # Translations and language state
+├── App.tsx                 # Root component
+├── main.tsx                # Entry point
+└── style.css               # Global styles
 ```
 
-## 🎨 Customization
+## Customization
 
-You can customize the content by editing:
-- Project data in `src/components/Projects.tsx`
-- Skills in `src/components/Skills.tsx`
-- Work experience in `src/components/Experience.tsx`
-- Contact information in `src/components/Contact.tsx`
-- Colors in `tailwind.config.js`
-- Translations in `src/contexts/LanguageContext.tsx`
+Update content in the following files:
 
-## 📧 Contact Form Setup
+- Projects — `src/components/Projects.tsx`
+- Skills — `src/components/Skills.tsx`
+- Experience — `src/components/Experience.tsx`
+- Certifications — `src/components/Certifications.tsx`
+- Contact — `src/components/Contact.tsx`
+- Translations — `src/contexts/LanguageContext.tsx`
+- Theme colors — `tailwind.config.js`
 
-The contact form uses Web3Forms for email delivery. To set it up:
+## Contact Form Setup
 
-1. Get your Access Key from [Web3Forms](https://web3forms.com/)
-2. Create a `.env` file in the root directory
-3. Add: `VITE_WEB3FORMS_ACCESS_KEY=your_access_key_here`
+The contact form uses [Web3Forms](https://web3forms.com/) for email delivery.
+
+1. Create an access key at [Web3Forms](https://web3forms.com/)
+2. Add a `.env` file in the project root
+3. Set `VITE_WEB3FORMS_ACCESS_KEY=your_access_key_here`
 4. Restart the development server
 
-See `WEB3FORMS_SETUP.md` for detailed instructions.
+See `WEB3FORMS_SETUP.md` for full setup instructions.
 
-## 🚀 Deployment
+## Deployment
 
-### GitHub Pages
+This project is configured for GitHub Pages.
 
-1. Enable GitHub Pages in repository settings
-2. Set source to `gh-pages` branch
+1. Enable GitHub Pages in the repository settings
+2. Set the source branch to `gh-pages`
 3. Deploy:
+
 ```bash
 npm run deploy
 ```
 
-The site will be available at:
-`https://JorieSK.github.io/Jorie-Alsakran-Portfolio`
+The live URL:
 
-## 📝 Notes
+[https://joriesk.github.io/Jorie-Alsakran-Portfolio/](https://joriesk.github.io/Jorie-Alsakran-Portfolio/)
 
-- Make sure to update project links and social media links
-- You can replace images with your actual project images
-- All animations are customizable through Framer Motion
-- The contact form requires Web3Forms setup to send emails
+## Notes
+
+- Update project links and social profiles in the relevant components before publishing
+- Replace placeholder assets with final project visuals where applicable
+- The contact form requires a valid Web3Forms access key to send messages
 
 ---
 
-Made with ❤️ using the latest technologies
+Jorie Alsakran · AI Engineer & Software Developer
